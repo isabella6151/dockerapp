@@ -19,4 +19,7 @@ deployment:
     branch: [dockerappv6, master]
     commands:
       - docker login -e $DOCKER_HUB_EMAIL -u $DOCKER_HUB_USER_ID -p $DOCKER_HUB_PWD
+      - docker tag dockerapp_dockerappv6 $DOCKER_HUB_USER_ID/dockerappv6:$CIRCLE_SHA1
+      - docker tag dockerapp_dockerappv6 $DOCKER_HUB_USER_ID/dockerappv6:latest
+      - docker push $DOCKER_HUB_USER_ID/dockerappv6:$CIRCLE_SHA1
       - docker push $DOCKER_HUB_USER_ID/dockerappv6:latest
